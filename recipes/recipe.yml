@@ -67,8 +67,8 @@ modules:
 
   - type: script
     scritps:
-      - 60-clean-base
-      - 999-cleanup
+      - 60-clean-base.sh
+      - 999-cleanup.sh
 
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
