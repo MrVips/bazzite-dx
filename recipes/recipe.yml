@@ -19,6 +19,8 @@ modules:
 
   - type: dnf
     repos:
+      copr:
+        - ublue-os:packages
       files:
         - https://packages.microsoft.com/yumrepos/vscode/config.repo
         - https://repository.mullvad.net/rpm/stable/mullvad.repo
@@ -35,6 +37,7 @@ modules:
         - guestfs-tools
         - code
         - mullvad-vpn
+        - ublue-setup-services
     remove:
       packages:
         - waydroid
