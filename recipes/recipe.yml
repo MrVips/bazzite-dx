@@ -66,7 +66,7 @@ modules:
         - ublue-user-setup.service
 
   - type: script
-    scritps:
+    scripts:
       - 60-clean-base.sh
       - 999-cleanup.sh
 
