@@ -1,12 +1,12 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 # image will be published to ghcr.io/<user>/<name>
-name: template
+name: bazzite-dx
 # description will be included in the image's metadata
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
+base-image: ghcr.io/ublue-os/bazzite
 image-version: latest # You can pin to a specific version of Fedora as well
 
 # module configuration, executed in order
@@ -19,27 +19,56 @@ modules:
 
   - type: dnf
     repos:
-      copr:
-        - atim/starship
+      files:
+        - https://packages.microsoft.com/yumrepos/vscode/config.repo
+        - https://repository.mullvad.net/rpm/stable/mullvad.repo
+      cleanup: true
     install:
+      install-weak-deps: true
       packages:
-        - micro
-        - starship
+        - google-noto-sans-fonts
+        - restic
+        - zsh
+        - qemu
+        - virt-manager
+        - edk2-ovmf
+        - guestfs-tools
+        - code
+        - mullvad-vpn
     remove:
       packages:
-        # example: removing firefox (in favor of the flatpak)
-        # "firefox" is the main package, "firefox-langpacks" is a dependency
-        - firefox
-        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
-
+        - waydroid
+        - waydroid-selinux
+        
   - type: default-flatpaks
     configurations:
       - notify: true # Send notification after install/uninstall is finished (true/false)
-        scope: system
+        scope: user
         # If no repo information is specified, Flathub will be used by default
         install: # system flatpaks we want all users to have and not remove
-          - org.mozilla.firefox
-          - org.gnome.Loupe
-      - scope: user # Also add Flathub user repo, but no user packages
+          - dev.vencord.Vesktop
+          - com.spotify.Client
+          - de.leopoldluley.Clapgrep
+          - org.qbittorrent.qBittorrent
+          - org.signal.Signal
+          - org.telegram.desktop
+          - io.github.giantpinkrobots.varia
+          - it.mijorus.gearlever
+          - org.gimp.GIMP
+          - org.qbittorrent.qBittorrent
+
+  - type: systemd
+    system:
+      enabled:
+        - bazzite-dx-groups.service
+    user:
+      enabled:
+        - ublue-user-setup.service
+
+  - type: script
+    scritps:
+      - 60-clean-base
+      - 999-cleanup
+
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
