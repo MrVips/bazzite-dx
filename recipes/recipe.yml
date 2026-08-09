@@ -38,7 +38,6 @@ modules:
         - guestfs-tools
         - code
         - mullvad-vpn
-        - ublue-setup-services
         - containerd.io
         - docker-ce
         - docker-ce-cli
