@@ -69,9 +69,6 @@ modules:
       enabled:
         - bazzite-dx-groups.service
         - docker.socket
-    user:
-      enabled:
-        - ublue-user-setup.service
   
   - type: justfiles
 
