@@ -1,6 +1,5 @@
 # My custom bazzite-dx
 Based on bazzite:stable
-No docker because meh
 
 # BlueBuild Template &nbsp; [![bluebuild build badge](https://github.com/blue-build/template/actions/workflows/build.yml/badge.svg)](https://github.com/blue-build/template/actions/workflows/build.yml)
 
