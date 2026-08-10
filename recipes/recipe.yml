@@ -34,6 +34,8 @@ modules:
         - zsh
         - qemu
         - virt-manager
+        - qemu-kvm
+        - libvirt
         - edk2-ovmf
         - guestfs-tools
         - code
@@ -42,6 +44,7 @@ modules:
         - docker-ce
         - docker-ce-cli
         - docker-compose-plugin
+        - ublue-setup-services
     remove:
       packages:
         - waydroid
@@ -50,7 +53,7 @@ modules:
   - type: default-flatpaks
     configurations:
       - notify: true # Send notification after install/uninstall is finished (true/false)
-        scope: user
+        scope: system
         # If no repo information is specified, Flathub will be used by default
         install: # system flatpaks we want all users to have and not remove
           - dev.vencord.Vesktop
@@ -69,6 +72,10 @@ modules:
       enabled:
         - bazzite-dx-groups.service
         - docker.socket
+        - ublue-system-setup.service
+    user:
+      enabled:
+        - ublue-user-setup.service
   
   - type: justfiles
 

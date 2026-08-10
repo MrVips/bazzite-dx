@@ -12,7 +12,7 @@ dx-group:
         fi
     }
 
-    GROUPS_ADD=("libvirt" "dialout")
+    GROUPS_ADD=("libvirt" "dialout" "docker")
 
     for GROUP_ADD in "${GROUPS_ADD[@]}" ; do
         append_group $GROUP_ADD
