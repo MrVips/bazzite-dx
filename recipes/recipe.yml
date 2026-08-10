@@ -82,5 +82,6 @@ modules:
   - type: script
     snippets:
       - 'sed -i "s@override-eol-markings@  - /usr/share/ublue-os/bazaar/blocklist-dx.yaml\noverride-eol-markings@g" /usr/share/ublue-os/bazaar/main.yaml'
+      - 'rm /usr/libexec/waydroid-*'
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully

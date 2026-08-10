@@ -16,9 +16,11 @@ append_group() {
 # Setup Groups
 append_group docker
 append_group libvirt
+append_group dialout
 
 wheelarray=($(getent group wheel | cut -d ":" -f 4 | tr ',' '\n'))
 for user in $wheelarray; do
   usermod -aG docker $user
   usermod -aG libvirt $user
+  usermod -aG dialout $user
 done
